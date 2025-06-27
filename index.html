@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Ruta del Tundunchil - Juego Interactivo&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, #9b643b, #f0d9b5);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #3e2f1c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 1px 1px 2px #5d3b1a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#map {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: url('https://i.imgur.com/8URlTWX.jpg') no-repeat center center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-size: cover;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 400px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 2rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 4px solid #6e4b20;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 3px 3px 10px rgba(0,0,0,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Paradas */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stop {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #d6a157cc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 3px solid #8a6a30;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #4a3112;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 1px 1px 4px #cba15e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stop:hover:not(.disabled) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: scale(1.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 15px #cda15f;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.disabled {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #a98a6b88;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color: #5a472f88;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #7a6a57;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: not-allowed;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: none !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Posiciones de paradas */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#toctepamba {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 70%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>left: 12%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#socartes {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 45%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#gungrande {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 20%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>left: 80%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#question-box {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #f5f1e9cc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 3px solid #8a6a30;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 2px 2px 10px rgba(0,0,0,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#question-box h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #5b3d0a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.options {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.options li {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.options button {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #d6a157;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #4a3112;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: background-color 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.options button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #c48e3b;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.options button:disabled {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #a98a6b88;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: default;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #7a6a57;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#feedback {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 2em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#final-message {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #d6a157cc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 3px solid #8a6a30;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.3rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #4a3112;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 2px 2px 12px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#baston {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;🧭 Ruta del Tundunchil&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="map"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stop" id="toctepamba" data-stop="0" title="Toctepamba"&gt;Toctepamba&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stop disabled" id="socartes" data-stop="1" title="Socartes"&gt;Socartes&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stop disabled" id="gungrande" data-stop="2" title="Gun Grande"&gt;Gun Grande&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="question-box" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 id="question-text"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul class="options" id="options-list"&gt;&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="feedback"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="final-message" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;🎉 ¡Felicitaciones, has recorrido la Ruta del Tundunchil y has recibido el bastón sagrado, símbolo de sabiduría ancestral!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="baston"&gt;🪓✨&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const stops = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name: "Toctepamba",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>question: "¿Cuál es la función principal del Tundunchil en la comunidad?",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Cantar y bailar solo por diversión", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Representar y preservar las tradiciones ancestrales", correct: true },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Ser un líder político", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Organizar eventos deportivos", correct: false }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback: "El Tundunchil es importante porque representa y preserva las tradiciones ancestrales."</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name: "Socartes",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>question: "¿Qué elemento del vestuario del Wawa Danza simboliza la conexión con la tierra?",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "La máscara", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Los cascabeles", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "El atuendo tejido", correct: true },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "El bastón sagrado", correct: false }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback: "El atuendo tejido representa la conexión con la tierra en el vestuario del Wawa Danza."</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name: "Gun Grande",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>question: "¿Qué festividad es la más importante para los Tundunchil?",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Carnaval", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Fiesta del Inti Raymi", correct: false },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Vísperas del Tundunchil", correct: true },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ text: "Fiesta de San Juan", correct: false }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback: "La fiesta de Vísperas del Tundunchil es la festividad más importante para esta cultura."</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentStop = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const stopsElements = document.querySelectorAll('.stop');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const questionBox = document.getElementById('question-box');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const questionText = document.getElementById('question-text');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const optionsList = document.getElementById('options-list');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const feedbackDiv = document.getElementById('feedback');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const finalMessage = document.getElementById('final-message');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function enableStop(index) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>stopsElements.forEach((el, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(i === index) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.classList.remove('disabled');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(i &gt; index) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.classList.add('disabled');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showQuestion(index) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>questionBox.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>finalMessage.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>feedbackDiv.textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>questionText.textContent = stops[index].question;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Limpiar opciones previas</p>
+<p class="p1"><span class="Apple-converted-space">      </span>optionsList.innerHTML = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>stops[index].options.forEach((opt, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const li = document.createElement('li');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = opt.text;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; checkAnswer(i, index);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>li.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optionsList.appendChild(li);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function checkAnswer(selectedIndex, stopIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const isCorrect = stops[stopIndex].options[selectedIndex].correct;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(isCorrect) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackDiv.style.color = '#2e7d32'; // verde</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackDiv.textContent = "¡Correcto! Avanza a la siguiente parada.";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>disableOptions();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Avanzar después de 2 segundos</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>currentStop++;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if(currentStop &lt; stops.length) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>enableStop(currentStop);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showQuestion(currentStop);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>highlightCurrentStop(currentStop);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Juego terminado</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionBox.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalMessage.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clearHighlights();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackDiv.style.color = '#c62828'; // rojo</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackDiv.textContent = stops[stopIndex].feedback + " Intenta de nuevo.";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function disableOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const buttons = optionsList.querySelectorAll('button');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>buttons.forEach(btn =&gt; btn.disabled = true);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function highlightCurrentStop(index) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>stopsElements.forEach((el, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(i === index) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.boxShadow = "0 0 15px 5px #cda15f";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.transform = "scale(1.3)";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.zIndex = 10;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.boxShadow = "";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.transform = "scale(1)";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>el.style.zIndex = 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function clearHighlights() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>stopsElements.forEach(el =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>el.style.boxShadow = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>el.style.transform = "scale(1)";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>el.style.zIndex = 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Eventos click en paradas</p>
+<p class="p1"><span class="Apple-converted-space">    </span>stopsElements.forEach((el, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!el.classList.contains('disabled')) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>currentStop = i;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showQuestion(i);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>highlightCurrentStop(i);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Inicializar juego</p>
+<p class="p1"><span class="Apple-converted-space">    </span>enableStop(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>highlightCurrentStop(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showQuestion(0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
